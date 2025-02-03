@@ -18,7 +18,7 @@ nav {
 
 @keyframes navbar_animation {
     100% {
-        transform: translateY(-5rem);
+        transform: translateY(0rem);
         clip-path: inset(0% 0% 0% 0%);
     }
 }
