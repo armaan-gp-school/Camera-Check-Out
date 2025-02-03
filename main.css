@@ -4,7 +4,7 @@ nav {
     z-index: 5;
     display: block;
     width: 100%;
-    height: 12rem;
+    height: 8rem;
     position: absolute;
     top: 30rem;
     left: 0%;
@@ -14,12 +14,12 @@ nav {
     text-overflow: clip;
     animation: navbar_animation 2s ease-in-out forwards;
     clip-path: inset(100% 0% 0% 0%);
-    transform: translateY(30rem);
+    transform: translateY(10rem);
 }
 
 @keyframes navbar_animation {
     100% {
-        transform: translateY(-30rem);
+        transform: translateY(-10rem);
         clip-path: inset(0% 0% 0% 0%);
     }
 }
