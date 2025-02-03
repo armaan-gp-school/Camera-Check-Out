@@ -14,12 +14,12 @@ nav {
     text-overflow: clip;
     animation: navbar_animation 2s ease-in-out forwards;
     clip-path: inset(100% 0% 0% 0%);
-    transform: translateY(150%);
+    transform: translateY(40rem);
 }
 
 @keyframes navbar_animation {
     100% {
-        transform: translateY(0%);
+        transform: translateY(-40rem);
         clip-path: inset(0% 0% 0% 0%);
     }
 }
