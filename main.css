@@ -4,11 +4,11 @@ nav {
     z-index: 5;
     display: block;
     width: 100%;
-    height: 8%;
+    height: 12rem;
     position: absolute;
-    top: 14%;
+    top: 5rem;
     left: 0%;
-    background-color: transparent;
+    background-color: red;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: clip;
@@ -71,7 +71,7 @@ a:hover .hover_underline {
 
 body {
     background-color: rgb(20,20,20);
-    height: 2000px;
+    height: 125rem;
 }
 
 .background {
