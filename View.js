@@ -36,6 +36,32 @@ function updateTable(model, template, whereAdd) {
         const returnedBox = createAndReturn('input');
 
         newTr.querySelector('.returned').appendChild(returnedBox);
+
+        newTr.querySelector('.editButton').querySelector('a').addEventListener('click', function() {
+            console.log("hi")
+            const firstNameInp = document.createElement('input');
+            firstNameInp.type = 'text';
+            firstNameInp.value = newTr.querySelector('.firstName').innerText;
+            newTr.querySelector('.firstName').innerHTML = '';
+            newTr.querySelector('.firstName').appendChild(firstNameInp);
+
+            const lastNameInp = document.createElement('input');
+            lastNameInp.type = 'text';
+            lastNameInp.value = newTr.querySelector('.lastName').innerText;
+            newTr.querySelector('.lastName').innerHTML = '';
+            newTr.querySelector('.lastName').appendChild(lastNameInp);
+
+            //do the same thing as above for the rest of the inputs below! (except for returned, that should have nothing - its implemented correctly and should be unchecked when edit is done)
+            const equipmentInp = document.createElement('input');
+            equipmentInp.value = newTr.querySelector('.equipment').innerText;
+            const checkOutDateInp = document.createElement('input');
+
+            // newTr.querySelector('.firstName').innerText = x.getFirstName();
+            // newTr.querySelector('.lastName').innerText = x.getLastName();
+            // newTr.querySelector('.equipment').innerText = x.getEquipment();
+            // newTr.querySelector('.checkOutDate').innerText = x.getCheckoutDate();
+            newTr.querySelector('.returned').innerHTML = ""; //note: should not be able to edit returned? during edit mode, only after changes saved
+        })
         
         returnedBox.addEventListener('click', function() {
             if (!returnedBox.checked === true) {return};

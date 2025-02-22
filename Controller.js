@@ -30,16 +30,36 @@ document.addEventListener('keydown', function(evt) {
         barcode += evt.key;
     interval = setInterval(() => barcode = '', 20);
 });
+
+function getNoSpacesText(text) {
+    return text.replace(/\s+/g, '');
+}
+
+function clearInputs() {
+    userInputs.studentID.value = '';
+    userInputs.equipment.value = '';
+}
+
 function handleBarcode (scanned_barcode) {
+    scanned_barcode = getNoSpacesText(scanned_barcode);
     if (scanned_barcode.length === studentIDlen) {
-        studentIDInput.value = scanned_barcode;
+        userInputs.studentID.value = scanned_barcode;
+        if (getNoSpacesText(userInputs.equipment.value).length != 0) {
+            model.addItem(new checkOutItem(userInputs.studentID.value, userInputs.equipment.value, userInputs.checkoutDate.value));
+            clearInputs();
+        }
     } else if (scanned_barcode.length === equipmentIDlen) {
-        equipmentText.value = scanned_barcode;
+        userInputs.equipment.value = scanned_barcode;
+        if (getNoSpacesText(userInputs.studentID.value).length != 0) {
+            model.addItem(new checkOutItem(userInputs.studentID.value, userInputs.equipment.value, userInputs.checkoutDate.value));
+            clearInputs();
+        }
     }
 }
 
 function onClick() {
     model.addItem(new checkOutItem(userInputs.studentID.value, userInputs.equipment.value, userInputs.checkoutDate.value));
+    clearInputs();
 }
 
 addInfoButton.onclick = onClick;

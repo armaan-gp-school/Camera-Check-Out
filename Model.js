@@ -90,7 +90,7 @@ const students = [ /*Yes I'll find another way to store the data*/
 ];
 
 function removeSpaces(text) {
-    return text.replace(/\s+/g, '');;
+    return text.replace(/\s+/g, '');
 }
 
 class checkOutItem {

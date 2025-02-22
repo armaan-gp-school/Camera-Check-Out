@@ -15,3 +15,7 @@ a {
 td,th {
     padding: 5px;
 }
+
+.editButton {
+    cursor: pointer;
+}
