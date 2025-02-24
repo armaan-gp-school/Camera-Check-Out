@@ -37,6 +37,7 @@ function updateTable(model, template, whereAdd) {
         const returnedBox = createAndReturn('input');
 
         newTr.querySelector('.returned').appendChild(returnedBox);
+
         let editLink =  newTr.querySelector('.editButton').querySelector('a');
         editLink.addEventListener('click', function() {
 
@@ -68,6 +69,12 @@ function updateTable(model, template, whereAdd) {
                 newTr.querySelector('.checkOutDate').innerHTML = '';
                 newTr.querySelector('.checkOutDate').appendChild(checkOutDateInp);
 
+                const checkOutTimeInp = document.createElement('input');
+                checkOutTimeInp.type = 'time';
+                checkOutTimeInp.value = convertTo24HourFormat(newTr.querySelector('.checkOutTime').innerText);
+                newTr.querySelector('.checkOutTime').innerHTML = '';
+                newTr.querySelector('.checkOutTime').appendChild(checkOutTimeInp);
+
                 // newTr.querySelector('.firstName').innerText = x.getFirstName();
                 // newTr.querySelector('.lastName').innerText = x.getLastName();
                 // newTr.querySelector('.equipment').innerText = x.getEquipment();
@@ -87,6 +94,9 @@ function updateTable(model, template, whereAdd) {
 
                 newTr.querySelector('.checkOutDate').innerText = newTr.querySelector('.checkOutDate').querySelector('input').value;
                 x.setCheckoutDate(newTr.querySelector('.checkOutDate').innerText);
+
+                newTr.querySelector('.checkOutTime').innerText = convertTo12HourFormat(newTr.querySelector('.checkOutTime').querySelector('input').value);
+                x.setTime(newTr.querySelector('.checkOutTime').innerText);
 
                 newTr.querySelector('.returned').appendChild(returnedBox); //note: should not be able to edit returned? during edit mode, only after changes saved
                 console.log(x.getFirstName());
@@ -118,6 +128,34 @@ function getTime(date) { //StackOverflow code https://stackoverflow.com/question
     let h = (d.getHours()<10?'0':'') + d.getHours();
     let m = (d.getMinutes()<10?'0':'') + d.getMinutes();
     return h + ':' + m;
+}
+
+function convertTo24HourFormat(timeStr) { //CHATGPT code to format time
+    // Create a Date object with the given time string
+    let date = new Date('1970-01-01 ' + timeStr); // Adding a dummy date to parse time correctly
+    
+    // Extract the hours and minutes in 24-hour format
+    let hours = date.getHours(); // 0-23
+    let minutes = date.getMinutes(); // 0-59
+    
+    // Format to two digits if needed
+    hours = hours < 10 ? '0' + hours : hours;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    
+    // Return in 24-hour format (HH:mm)
+    return `${hours}:${minutes}`;
+}
+
+function convertTo12HourFormat(time) { //CHATGPT code to format time
+    let [hours, minutes] = time.split(":").map(num => parseInt(num, 10));
+    
+    let ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12; // Convert to 12-hour format
+    hours = hours ? hours : 12; // Handle 0 hour as 12
+    hours = hours < 10 ? '0' + hours : hours; //add leading zero to hours
+    minutes = minutes < 10 ? '0' + minutes : minutes; // Add leading zero if needed
+    
+    return `${hours}:${minutes} ${ampm}`;
 }
 
 class ToDoListView {

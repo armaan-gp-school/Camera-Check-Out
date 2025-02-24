@@ -93,12 +93,6 @@ function removeSpaces(text) {
     return text.replace(/\s+/g, '');
 }
 
-function getTime(date) { //StackOverflow code https://stackoverflow.com/questions/10599148/how-do-i-get-the-current-time-only-in-javascript
-    let d = new Date();
-    let h = (d.getHours()<10?'0':'') + d.getHours();
-    let m = (d.getMinutes()<10?'0':'') + d.getMinutes();
-    return h + ':' + m;
-}
 
 class checkOutItem {
     constructor(id, equipment, checkoutDate, time) {
@@ -117,6 +111,7 @@ class checkOutItem {
         let ampm = hours >= 12 ? 'PM' : 'AM';
         hours = hours % 12; // Convert to 12-hour format
         hours = hours ? hours : 12; // Handle 0 hour as 12
+        hours = hours < 10 ? '0' + hours : hours; //add leading zero to hours
         minutes = minutes < 10 ? '0' + minutes : minutes; // Add leading zero if needed
         
         return `${hours}:${minutes} ${ampm}`;
