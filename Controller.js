@@ -8,7 +8,8 @@ let view = new ToDoListView(model);
 let userInputs = {
     studentID: document.getElementById('idText'),
     equipment: document.getElementById('equipmentText'),
-    checkoutDate: document.getElementById('checkoutDate')
+    checkoutDate: document.getElementById('checkoutDate'),
+    time: document.getElementById('checkoutTime')
 };
 
 const studentIDlen = 11;
@@ -45,20 +46,20 @@ function handleBarcode (scanned_barcode) {
     if (scanned_barcode.length === studentIDlen) {
         userInputs.studentID.value = scanned_barcode;
         if (getNoSpacesText(userInputs.equipment.value).length != 0) {
-            model.addItem(new checkOutItem(userInputs.studentID.value, userInputs.equipment.value, userInputs.checkoutDate.value));
+            model.addItem(new checkOutItem(userInputs.studentID.value, userInputs.equipment.value, userInputs.checkoutDate.value, userInputs.time.value));
             clearInputs();
         }
     } else if (scanned_barcode.length === equipmentIDlen) {
         userInputs.equipment.value = scanned_barcode;
         if (getNoSpacesText(userInputs.studentID.value).length != 0) {
-            model.addItem(new checkOutItem(userInputs.studentID.value, userInputs.equipment.value, userInputs.checkoutDate.value));
+            model.addItem(new checkOutItem(userInputs.studentID.value, userInputs.equipment.value, userInputs.checkoutDate.value, userInputs.time.value));
             clearInputs();
         }
     }
 }
 
 function onClick() {
-    model.addItem(new checkOutItem(userInputs.studentID.value, userInputs.equipment.value, userInputs.checkoutDate.value));
+    model.addItem(new checkOutItem(userInputs.studentID.value, userInputs.equipment.value, userInputs.checkoutDate.value, userInputs.time.value));
     clearInputs();
 }
 

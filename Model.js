@@ -93,14 +93,33 @@ function removeSpaces(text) {
     return text.replace(/\s+/g, '');
 }
 
+function getTime(date) { //StackOverflow code https://stackoverflow.com/questions/10599148/how-do-i-get-the-current-time-only-in-javascript
+    let d = new Date();
+    let h = (d.getHours()<10?'0':'') + d.getHours();
+    let m = (d.getMinutes()<10?'0':'') + d.getMinutes();
+    return h + ':' + m;
+}
+
 class checkOutItem {
-    constructor(id, equipment, checkoutDate) {
+    constructor(id, equipment, checkoutDate, time) {
         id = removeSpaces(id) + "";
         this.studentID = id;
         this.equipment = equipment;
         this.checkoutDate = checkoutDate;
+        this.time = this.convertTo12HourFormat(time);
         this.firstName = this.returnName(true, id);
         this.lastName = this.returnName(false, id);
+    }
+
+    convertTo12HourFormat(time) { //CHATGPT code to format time
+        let [hours, minutes] = time.split(":").map(num => parseInt(num, 10));
+        
+        let ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12; // Convert to 12-hour format
+        hours = hours ? hours : 12; // Handle 0 hour as 12
+        minutes = minutes < 10 ? '0' + minutes : minutes; // Add leading zero if needed
+        
+        return `${hours}:${minutes} ${ampm}`;
     }
 
     setFirstName(f) {
@@ -118,6 +137,11 @@ class checkOutItem {
     setCheckoutDate(d) {
          this.checkoutDate = d;
     }
+    
+    setTime(t) {
+        this.time = t;
+    }
+
 
     getFirstName() {
         return this.firstName;
@@ -133,6 +157,10 @@ class checkOutItem {
     
     getCheckoutDate() {
         return this.checkoutDate;
+    }
+    
+    getTime() {
+        return this.time;
     }
 
     returnName(isFirstName, id) {

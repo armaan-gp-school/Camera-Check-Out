@@ -31,6 +31,7 @@ function updateTable(model, template, whereAdd) {
         newTr.querySelector('.lastName').innerText = x.getLastName();
         newTr.querySelector('.equipment').innerText = x.getEquipment();
         newTr.querySelector('.checkOutDate').innerText = x.getCheckoutDate();
+        newTr.querySelector('.checkOutTime').innerText = x.getTime();
         newTr.querySelector('.returned').innerHTML = "";
 
         const returnedBox = createAndReturn('input');
@@ -55,7 +56,6 @@ function updateTable(model, template, whereAdd) {
                 newTr.querySelector('.lastName').innerHTML = '';
                 newTr.querySelector('.lastName').appendChild(lastNameInp);
 
-                //do the same thing as above for the rest of the inputs below! (except for returned, that should have nothing - its implemented correctly and should be unchecked when edit is done)
                 const equipmentInp = document.createElement('input');
                 equipmentInp.type = 'text';
                 equipmentInp.value = newTr.querySelector('.equipment').innerText;
@@ -113,14 +113,23 @@ function getTodayDate() { //StackOverflow code https://stackoverflow.com/questio
     return yyyy + '-' + mm + '-' + dd;
 }
 
+function getTime(date) { //StackOverflow code https://stackoverflow.com/questions/10599148/how-do-i-get-the-current-time-only-in-javascript
+    let d = new Date();
+    let h = (d.getHours()<10?'0':'') + d.getHours();
+    let m = (d.getMinutes()<10?'0':'') + d.getMinutes();
+    return h + ':' + m;
+}
+
 class ToDoListView {
     constructor(model) {
         this.model = model;
         this.tTemplate = document.getElementById('newItem');
         this.tContents = document.getElementById('contents');
         this.dateCheckOut = document.getElementById('checkoutDate');
+        this.time = document.getElementById('checkoutTime');
 
         this.dateCheckOut.value = getTodayDate();
+        this.time.value = getTime();
 
         this.model.subscribe(this.updateView.bind(this));
     }
