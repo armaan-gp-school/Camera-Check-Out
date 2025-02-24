@@ -103,6 +103,22 @@ class checkOutItem {
         this.lastName = this.returnName(false, id);
     }
 
+    setFirstName(f) {
+        this.firstName = f;
+    }
+    
+    setLastName(n) {
+         this.lastName = n;
+    }
+    
+    setEquipment(e) {
+         this.equipment = e;
+    }
+    
+    setCheckoutDate(d) {
+         this.checkoutDate = d;
+    }
+
     getFirstName() {
         return this.firstName;
     }

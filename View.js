@@ -36,31 +36,64 @@ function updateTable(model, template, whereAdd) {
         const returnedBox = createAndReturn('input');
 
         newTr.querySelector('.returned').appendChild(returnedBox);
+        let editLink =  newTr.querySelector('.editButton').querySelector('a');
+        editLink.addEventListener('click', function() {
 
-        newTr.querySelector('.editButton').querySelector('a').addEventListener('click', function() {
+            if (editLink.innerText === "edit") { //well NOW they are editing so change to done
+                editLink.innerText = "done"; //change text to done!
+
+
+                const firstNameInp = document.createElement('input');
+                firstNameInp.type = 'text';
+                firstNameInp.value = newTr.querySelector('.firstName').innerText;
+                newTr.querySelector('.firstName').innerHTML = '';
+                newTr.querySelector('.firstName').appendChild(firstNameInp);
+
+                const lastNameInp = document.createElement('input');
+                lastNameInp.type = 'text';
+                lastNameInp.value = newTr.querySelector('.lastName').innerText;
+                newTr.querySelector('.lastName').innerHTML = '';
+                newTr.querySelector('.lastName').appendChild(lastNameInp);
+
+                //do the same thing as above for the rest of the inputs below! (except for returned, that should have nothing - its implemented correctly and should be unchecked when edit is done)
+                const equipmentInp = document.createElement('input');
+                equipmentInp.type = 'text';
+                equipmentInp.value = newTr.querySelector('.equipment').innerText;
+                newTr.querySelector('.equipment').innerHTML = '';
+                newTr.querySelector('.equipment').appendChild(equipmentInp);
+
+                const checkOutDateInp = document.createElement('input');
+                checkOutDateInp.type = 'date';
+                checkOutDateInp.value = newTr.querySelector('.checkOutDate').innerText;
+                newTr.querySelector('.checkOutDate').innerHTML = '';
+                newTr.querySelector('.checkOutDate').appendChild(checkOutDateInp);
+
+                // newTr.querySelector('.firstName').innerText = x.getFirstName();
+                // newTr.querySelector('.lastName').innerText = x.getLastName();
+                // newTr.querySelector('.equipment').innerText = x.getEquipment();
+                // newTr.querySelector('.checkOutDate').innerText = x.getCheckoutDate();
+                newTr.querySelector('.returned').innerHTML = "";
+            } else if (editLink.innerText === "done") { //they WERE editing but now theyre done
+                editLink.innerText = "edit"; //change text to edit so they can edit again!
+
+                newTr.querySelector('.firstName').innerText = newTr.querySelector('.firstName').querySelector('input').value;
+                x.setFirstName(newTr.querySelector('.firstName').innerText);
+
+                newTr.querySelector('.lastName').innerText = newTr.querySelector('.lastName').querySelector('input').value;
+                x.setLastName(newTr.querySelector('.lastName').innerText);
+
+                newTr.querySelector('.equipment').innerText = newTr.querySelector('.equipment').querySelector('input').value;
+                x.setEquipment(newTr.querySelector('.equipment').innerText);
+
+                newTr.querySelector('.checkOutDate').innerText = newTr.querySelector('.checkOutDate').querySelector('input').value;
+                x.setCheckoutDate(newTr.querySelector('.checkOutDate').innerText);
+
+                newTr.querySelector('.returned').appendChild(returnedBox); //note: should not be able to edit returned? during edit mode, only after changes saved
+                console.log(x.getFirstName());
+            }
+
             console.log("hi")
-            const firstNameInp = document.createElement('input');
-            firstNameInp.type = 'text';
-            firstNameInp.value = newTr.querySelector('.firstName').innerText;
-            newTr.querySelector('.firstName').innerHTML = '';
-            newTr.querySelector('.firstName').appendChild(firstNameInp);
-
-            const lastNameInp = document.createElement('input');
-            lastNameInp.type = 'text';
-            lastNameInp.value = newTr.querySelector('.lastName').innerText;
-            newTr.querySelector('.lastName').innerHTML = '';
-            newTr.querySelector('.lastName').appendChild(lastNameInp);
-
-            //do the same thing as above for the rest of the inputs below! (except for returned, that should have nothing - its implemented correctly and should be unchecked when edit is done)
-            const equipmentInp = document.createElement('input');
-            equipmentInp.value = newTr.querySelector('.equipment').innerText;
-            const checkOutDateInp = document.createElement('input');
-
-            // newTr.querySelector('.firstName').innerText = x.getFirstName();
-            // newTr.querySelector('.lastName').innerText = x.getLastName();
-            // newTr.querySelector('.equipment').innerText = x.getEquipment();
-            // newTr.querySelector('.checkOutDate').innerText = x.getCheckoutDate();
-            newTr.querySelector('.returned').innerHTML = ""; //note: should not be able to edit returned? during edit mode, only after changes saved
+            
         })
         
         returnedBox.addEventListener('click', function() {
