@@ -89,7 +89,7 @@ const students = [ /*Yes I'll find another way to store the data*/
     { firstName: "Cole", lastName: "Price", badgeId: "14509002486" }
 ];
 
-const cameras = [
+const cameras = [ /*Yes I'll find another way to store the data*/
     { cameraNum: 1, badgeNum: 185378 },
     { cameraNum: 2, badgeNum: 185346 },
     { cameraNum: 3, badgeNum: 185379 },
@@ -112,6 +112,36 @@ const cameras = [
     { cameraNum: 20, badgeNum: 185374 },
     { cameraNum: 'News Team', badgeNum: null } // For the Nikon Mirrorless without badge number
 ];
+
+const lenses = [ /*Yes I'll find another way to store the data*/
+    { lensNum: '18-55', badgeNum: 185323 },
+    { lensNum: '18-55', badgeNum: 185324 },
+    { lensNum: '18-55', badgeNum: 185325 },
+    { lensNum: '18-55', badgeNum: 185327 },
+    { lensNum: '35', badgeNum: 185328 },
+    { lensNum: '70-300', badgeNum: 185326 },
+    { lensNum: 'Fisheye/Marco Attachment', badgeNum: 185329 },
+    { lensNum: '50', badgeNum: 185330 },
+    { lensNum: '70-300', badgeNum: 185331 },
+    { lensNum: '35', badgeNum: 185332 },
+    { lensNum: '35', badgeNum: 185334 },
+    { lensNum: '50', badgeNum: 185336 },
+    { lensNum: '18-55', badgeNum: 185349 },
+    { lensNum: '18-55', badgeNum: 185352 },
+    { lensNum: '18-55', badgeNum: 185354 },
+    { lensNum: '1855', badgeNum: 185357 },
+    { lensNum: '35', badgeNum: 185359 },
+    { lensNum: '18-55', badgeNum: 185361 },
+    { lensNum: '35', badgeNum: 185362 },
+    { lensNum: '35', badgeNum: 185365 },
+    { lensNum: '35', badgeNum: 185367 },
+    { lensNum: '35', badgeNum: 185369 },
+    { lensNum: '35', badgeNum: 185371 },
+    { lensNum: '18-55', badgeNum: 185372 },
+    { lensNum: '55-200', badgeNum: 185376 },
+    { lensNum: '35', badgeNum: 185377 }
+];
+
 
 
 function removeSpaces(text) {
