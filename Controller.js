@@ -13,7 +13,7 @@ let userInputs = {
 };
 
 const studentIDlen = 11;
-const equipmentIDlen=6; //idk if this is accurate
+const equipmentIDlen=6; 
 
 let barcode = '';
 let interval;
