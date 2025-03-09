@@ -89,6 +89,31 @@ const students = [ /*Yes I'll find another way to store the data*/
     { firstName: "Cole", lastName: "Price", badgeId: "14509002486" }
 ];
 
+const cameras = [
+    { cameraNum: 1, badgeNum: 185378 },
+    { cameraNum: 2, badgeNum: 185346 },
+    { cameraNum: 3, badgeNum: 185379 },
+    { cameraNum: 4, badgeNum: 185351 },
+    { cameraNum: 5, badgeNum: 185353 },
+    { cameraNum: 6, badgeNum: 185333 },
+    { cameraNum: 7, badgeNum: 185358 },
+    { cameraNum: 8, badgeNum: 185364 },
+    { cameraNum: 9, badgeNum: 185335 },
+    { cameraNum: 10, badgeNum: 185356 },
+    { cameraNum: 11, badgeNum: 185355 },
+    { cameraNum: 12, badgeNum: 185360 },
+    { cameraNum: 13, badgeNum: 185370 },
+    { cameraNum: 14, badgeNum: 185375 },
+    { cameraNum: 15, badgeNum: 185322 },
+    { cameraNum: 16, badgeNum: 185321 },
+    { cameraNum: 17, badgeNum: null }, // Badge number is missing
+    { cameraNum: 18, badgeNum: 185350 },
+    { cameraNum: 19, badgeNum: 185380 },
+    { cameraNum: 20, badgeNum: 185374 },
+    { cameraNum: 'News Team', badgeNum: null } // For the Nikon Mirrorless without badge number
+];
+
+
 function removeSpaces(text) {
     return text.replace(/\s+/g, '');
 }
